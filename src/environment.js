@@ -1,0 +1,27 @@
+const environment = {
+  // BACKEND_BASE_URL: "http://localhost:8080",
+  BACKEND_BASE_URL: "https://raptor-run.pixelsaurus.xyz",
+  MORALIS_APP_ID: "",
+  MORALIS_SERVER_URL: "https://nbnob0befkpo.usemoralis.com:2053/server",
+  DEFAULT_CHAIN: 1,
+  PORT: "8080",
+  DEFAULT_HEX_CHAIN: "0x1",
+  RECEIVER_ADDRESS: {
+    5: "0x56426233C10880d029fB20dA51bF24450D5a93bC",
+    "eip155:5": "0x56426233C10880d029fB20dA51bF24450D5a93bC",
+
+    1: "0xB28EbdD23E18690f9365A7c4b1651eCe7Bdc13a8",
+    "eip155:1": "0xB28EbdD23E18690f9365A7c4b1651eCe7Bdc13a8",
+  },
+  TOKEN_ADDRESS: {
+    5: "0x42CD6Ae623FcdB8F9ef6045Ee6fAE8EE8a4F0B68",
+    "eip155:5": "0x56426233C10880d029fB20dA51bF24450D5a93bC",
+
+    1: "0xc9E6f8EB127666e138a9c33e792FC0309A861Eba",
+    "eip155:1": "0xc9E6f8EB127666e138a9c33e792FC0309A861Eba",
+  },
+  MIN_REQUIRED_BALANCE: 1000,
+  TOKEN_DECIMALS: 0,
+  WALLET_ID: "d54225f2b745b8a5ade8db259d224f88",
+};
+export default environment;
