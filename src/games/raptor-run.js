@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { MainWrapper } from "./styles";
 import environment from "environment";
-const s3Url = "https://metaminigames.s3.amazonaws.com/games/";
+const s3Url = "https://metaminigames.s3.amazonaws.com/public/";
 
 const RaptorRunGame = ({ screenWidth, challengeId, walletAddress }) => {
   useEffect(() => {
@@ -9,7 +9,7 @@ const RaptorRunGame = ({ screenWidth, challengeId, walletAddress }) => {
 
     function aFunctionImplementedInHtmlFile(jsString) {}
     const scriptLoader = document.createElement("script");
-    scriptLoader.src = "raptor-run/Build/WebGL.loader.js";
+    scriptLoader.src = s3Url + "raptor-run/Build/WebGL.loader.js";
     document.body.appendChild(scriptLoader);
 
     const scriptExternal = document.createElement("script");
@@ -74,9 +74,9 @@ const RaptorRunGame = ({ screenWidth, challengeId, walletAddress }) => {
     scriptLoader.onload = () => {
       window
         .createUnityInstance(document.querySelector("#unity-canvas"), {
-          dataUrl: "raptor-run/Build/WebGL.data",
-          frameworkUrl: "raptor-run/Build/WebGL.framework.js",
-          codeUrl: "raptor-run/Build/WebGL.wasm",
+          dataUrl: s3Url + "raptor-run/Build/WebGL.data",
+          frameworkUrl: s3Url + "raptor-run/Build/WebGL.framework.js",
+          codeUrl: s3Url + "raptor-run/Build/WebGL.wasm",
           streamingAssetsUrl: "StreamingAssets",
           companyName: "Game",
           productName: "Raptor Run",
