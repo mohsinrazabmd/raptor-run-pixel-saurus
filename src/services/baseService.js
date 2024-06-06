@@ -2,6 +2,7 @@ import axios from "axios";
 import { BrowserUtility } from "utility/browserUtility";
 import { StorageConstant } from "utility/constant";
 import { APIPath } from "../utility/constant/apiPath";
+import { CommonUtility } from "utility/common";
 
 const onSuccess = (response) => {
   console.debug("Request Successful!", response);
@@ -34,10 +35,17 @@ const request = async (options) => {
   //   StorageConstant.token
   // )}`;
 
+  const token = CommonUtility.getAdminToken();
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
   const client = axios.create({
+    // withCredentials: true,
     baseURL: APIPath.server,
+    headers: headers,
     // headers: { ...headers },
-    withCredentials: true,
   });
 
   return client(options).then(onSuccess).catch(onError);

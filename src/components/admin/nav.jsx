@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { LoginButton, LogoText, NavDiv } from "./elements";
 import { AdminAuthService } from "services/adminAuthService";
+import { UserService } from "services/userServices";
+import { useDisconnect } from "@web3modal/ethers5/react";
 
 const Navbar = () => {
-  // const navigate = useNavigate();
+  const { disconnect } = useDisconnect(); // Destructuring to get the disconnect method
+
 
   const logout = async () => {
     try {
-      const response = await AdminAuthService.logout();
+      disconnect()
+      // const response = await AdminAuthService.logout();
 
-      if (response && response.message === "success") {
-        window.location.reload();
-      }
+      // if (response && response.message === "success") {
+      //   window.location.reload();
+      // }
     } catch (e) {
       console.log(e);
     }

@@ -20,6 +20,7 @@ export const GetLiveChallengesHookAdmin = () => {
   const getLiveChallenge = async (id) => {
     try {
       setLoading(true);
+      console.log("Get live challenge hook");
       const result = await AdminChallengesService.live(gameId);
       if (result.data) {
         const challenge = CommonUtility.parseJsonWithDates(result.data);

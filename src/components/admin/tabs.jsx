@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { TabsBtmWrappers, TabsButton } from "./elements";
-// import UsersTab from "./users-tab";
 import CreateChallengeTab from "./createChallengeTab";
 import ChallengeRewardsTab from "./challengeRewardsTab";
 
@@ -10,12 +9,6 @@ const Tabs = () => {
   return (
     <div className="container">
       <TabsBtmWrappers>
-        {/* <TabsButton
-          onClick={() => setActiveTab("users")}
-          className={`${activeTab === "users" ? "active" : ""}`}
-        >
-          Users
-        </TabsButton> */}
         <TabsButton
           onClick={() => setActiveTab("create-challenge")}
           className={`${activeTab === "create-challenge" ? "active" : ""}`}

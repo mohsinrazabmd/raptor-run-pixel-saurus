@@ -15,6 +15,13 @@ export class CommonUtility {
       : text;
   }
 
+  static setAdminToken = (token) => {
+    localStorage.setItem("admin", token);
+  };
+  static getAdminToken = () => {
+    return localStorage.getItem("admin");
+  };
+
   static convertFromWei(weiInput, decimals, commas) {
     if (weiInput && decimals) {
       // var wei = numberToBN(weiInput); // eslint-disable-line

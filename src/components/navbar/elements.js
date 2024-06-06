@@ -43,7 +43,7 @@ export const MainSection = styled.section`
 
   .img-div {
     width: auto;
-    height: 35px;
+    height: 40px;
     cursor: pointer;
   }
   .menu-text {
@@ -135,9 +135,48 @@ export const MainSection = styled.section`
     position: relative;
   }
 
+  .logout-button-div-wrapper {
+    margin-left: 4px;
+    cursor: pointer;
+    @media (max-width: 992px) {
+      display: none;
+    }
+
+    .address-class {
+      background-color: rgb(130, 251, 1);
+      color: black;
+      font-weight: 600;
+      border-radius: 5px;
+      padding: 6px 14px;
+      font-size: 16px;
+    }
+  }
+
   .button-div-wrapper {
     @media (max-width: 992px) {
       display: none;
+    }
+
+    .address-class {
+      background-color: rgb(130, 251, 1);
+      color: black;
+      border-radius: 5px;
+      padding: 6px 14px;
+      font-size: 16px;
+    }
+  }
+
+  .mobile-button-div-wrapper {
+    @media (min-width: 992px) {
+      display: none;
+    }
+
+    .address-class {
+      background-color: rgb(130, 251, 1);
+      color: black;
+      border-radius: 5px;
+      padding: 6px 14px;
+      font-size: 16px;
     }
   }
 
@@ -166,7 +205,7 @@ export const ContainerDiv = styled.div`
 `;
 
 export const HeaderDiv = styled.div`
-  background: #86ec27;
+  margin-top: 3rem;
   color: #000;
   font-size: 1.0625rem;
   font-style: normal;

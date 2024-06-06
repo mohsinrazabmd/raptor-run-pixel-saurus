@@ -3,7 +3,7 @@ import { mainBG } from "assets";
 
 export const AppWrapper = styled.div`
   background-image: url(${mainBG});
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,17 +11,13 @@ export const AppWrapper = styled.div`
 
   .top-div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    @media (max-width: 576px) {
-      flex-direction: column;
-      padding-bottom: 1rem;
-    }
   }
 
   .timer-div {
     display: flex;
+    height: 40px;
     justify-content: center;
     align-items: center;
     background-color: rgb(130, 251, 1);
@@ -30,7 +26,7 @@ export const AppWrapper = styled.div`
     color: rgb(0, 0, 0);
     border: none;
     font-weight: 600;
-    padding: 2px 5px;
+    padding: 2px 10px;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   }
 

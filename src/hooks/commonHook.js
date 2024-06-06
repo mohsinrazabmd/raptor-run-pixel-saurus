@@ -11,7 +11,7 @@ export const CommonHook = () => {
   useEffect(() => {
     if (error) {
       if (error.status === 401) {
-        navigate("/admin-login");
+        // navigate("/admin-login");
         openNotification("Error", error.error, "error");
       } else {
         openNotification("Error", error.error, "error");

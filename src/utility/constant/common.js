@@ -12,6 +12,16 @@ export const UserRoles = {
   User: "user",
 };
 
+export const AdminWallets = [
+  "0x6397c85634AEa4ea9536721fc884CD3bF6b9DA0c",
+  "0x578D229734B1BBAED38e79d470461692263BC5b0",
+  "0xE2de4A890b68054e897147c17Afe0c2177F4f9bc",
+  "0x8e665eaa7551c42b94feca5c52977d22d77d508b",
+  "0x8D91D1Bb6A67ed5e105355CAf1436e517E1293Fd",
+  "0x3963a46c134b962100496B16Fcd21c12d164b0B7",
+  "0x40EC13DC211bD727EE8f7DF50bE9F635809b9dD1",
+];
+
 export const ErrorConstant = {
   default: "Something went wrong",
 };

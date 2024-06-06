@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { ChallengesService } from "services/challengesService";
 import LiveChallenge from "./live-challenge";
 import { CommonUtility } from "utility/common";
 import OverlayLoader from "components/loaders/overlayLoader";

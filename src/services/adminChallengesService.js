@@ -9,14 +9,14 @@ class AdminChallenges {
     return BaseService.get(`${APIPath.liveChallenge}/${id}`);
   };
 
-  challengeWinners = (id) => {
+  challengeWinners = async (id) => {
     return BaseService.get(`${APIPath.challengeWinners}/${id}`);
   };
 
-  upcomingChallenges = (gameId) => {
+  upcomingChallenges = async (gameId) => {
     return BaseService.get(`${APIPath.upcomingChallenges}/${gameId}`);
   };
-  allChallenges = (page) => {
+  allChallenges = async (page) => {
     return BaseService.get(`${APIPath.allChallenges}/${page}`);
   };
 }

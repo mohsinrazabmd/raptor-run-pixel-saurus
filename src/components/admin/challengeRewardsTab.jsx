@@ -6,33 +6,12 @@ import { AdminChallengesService } from "services/adminChallengesService";
 const ChallengeRewardsTab = () => {
   const [challenges, setChallenges] = useState([]);
   const [rewards, setRewards] = useState([]);
-  const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  const Tabledata = [
-    {
-      game: "Clumsy Pepe",
-      walletaddress: "0x578d229734b1bbaed38e79d470461692263bc5b0",
-      score: "22",
-      duration: "10",
-    },
-    {
-      game: "Clumsy Pepe",
-      walletaddress: "0x578d229734b1bbaed38e79d470461692263bc5b0",
-      score: "22",
-      duration: "10",
-    },
-    {
-      game: "Clumsy Pepe",
-      walletaddress: "0x578d229734b1bbaed38e79d470461692263bc5b0",
-      score: "22",
-      duration: "10",
-    },
-  ];
-  const onSearch = async () => {
+  const onSearch = async (id) => {
     try {
       // Change this api, to return only rewards, with gameId in them.
-      const result = await AdminChallengesService.challengeWinners(search);
+      const result = await AdminChallengesService.challengeWinners(id);
 
       if (result.error) throw result.error;
 
@@ -42,43 +21,24 @@ const ChallengeRewardsTab = () => {
     } finally {
     }
   };
-  useEffect(() => {
-    onSearch();
-  }, [search]);
-
-  const gamedata = [
-    {
-      name: "Clumsy Pepe",
-      status: "Ended",
-      starttime: "Start: 4/1/2024, 12:22:16 PM",
-      endtime: "End: 4/2/2024, 12:18:22 PM",
-    },
-    {
-      name: "Clumsy Pepe",
-      status: "Ended",
-      starttime: "Start: 4/1/2024, 12:22:16 PM",
-      endtime: "End: 4/2/2024, 12:18:22 PM",
-    },
-    {
-      name: "Clumsy Pepe",
-      status: "Ended",
-      starttime: "Start: 4/1/2024, 12:22:16 PM",
-      endtime: "End: 4/2/2024, 12:18:22 PM",
-    },
-  ];
 
   const getAllChallenges = async () => {
-    const response = await AdminChallengesService.allChallenges(page);
-    setChallenges(response.data);
-    setChallenges(
-      response.data.challenges.map((challenge) => {
-        return {
-          ...challenge,
-          startTime: new Date(challenge.startTime).toLocaleString(),
-          endTime: new Date(challenge.endTime).toLocaleString(),
-        };
-      })
-    );
+    try {
+      const response = await AdminChallengesService.allChallenges(page);
+      console.log(response);
+      setChallenges(response.data);
+      setChallenges(
+        response.data.challenges.map((challenge) => {
+          return {
+            ...challenge,
+            startTime: new Date(challenge.startTime).toLocaleString(),
+            endTime: new Date(challenge.endTime).toLocaleString(),
+          };
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -116,8 +76,7 @@ const ChallengeRewardsTab = () => {
                 <div className="table-btn-div">
                   <button
                     onClick={() => {
-                      setSearch(item._id);
-                      onSearch();
+                      onSearch(item._id);
                     }}
                   >
                     Select

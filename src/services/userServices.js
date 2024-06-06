@@ -11,6 +11,11 @@ class User {
   addUserProfile = (data) => {
     return BaseService.post(APIPath.addUserProfile, data);
   };
+
+  signUp = (walletAddress) => {
+    return BaseService.post(APIPath.signUp, { walletAddress });
+  };
+
   getUserProfile = (walletAddress) => {
     return BaseService.get(`${APIPath.getUserProfile}/${walletAddress}`);
   };

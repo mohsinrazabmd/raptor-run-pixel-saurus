@@ -11,6 +11,11 @@ class Admin {
   auth = () => {
     return BaseService.get(APIPath.auth);
   };
+
+  checkAdminAuth = (wallet) => {
+    return BaseService.post(APIPath.checkAdminAuth, { walletAddress: wallet });
+  };
+
   updatePassword = (data) => {
     return BaseService.put(APIPath.updatePassword, data);
   };

@@ -2,45 +2,75 @@ import React, { useEffect, useState } from "react";
 import { MainSection } from "./elements";
 import Navbar from "./nav";
 import Tabs from "./tabs";
-import { Loader } from "components/common";
-import LoginWithGoogle from "./loginWithGoogle";
-import { AdminAuthService } from "services/adminAuthService";
+import { UserService } from "services/userServices";
+import connectbtn from "../../assets/images/connectbtn.png";
+import {
+  useDisconnect,
+  useWeb3Modal,
+  useWeb3ModalAccount,
+} from "@web3modal/ethers5/react";
+import environment from "environment";
+import { AdminService } from "services";
+import { CommonUtility } from "utility/common";
 
 const AdminPanel = () => {
-  const [loading, setLoading] = useState(false);
+  const { disconnect } = useDisconnect();
+  const { address } = useWeb3ModalAccount();
+  const modal = useWeb3Modal();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    document.title = "PIXEL SAURUS ADMIN PANEL";
-  }, []);
+  const logOut = () => {
+    disconnect();
+    localStorage.clear();
+    window.location.reload();
+  };
 
-  let [user, setUser] = useState(true);
-  const getUser = async () => {
+  const checkIsAdmin = async () => {
     try {
-      const data = await AdminAuthService.getUserAuth();
-
-      setUser(data.user);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
+      const response = await AdminService.checkAdminAuth(address);
+      CommonUtility.setAdminToken(response.data.token);
+      console.log(response);
+      setIsAdmin(true);
+    } catch (error) {
+      console.log(error);
+      setIsAdmin(false);
     }
   };
 
   useEffect(() => {
-   // getUser();
-  }, []);
-  if (loading) {
-    return <Loader />;
-  } else if (!user) {
-    return <LoginWithGoogle />;
-  } else {
-    return (
-      <MainSection>
-        <Navbar />
-        <Tabs />
-      </MainSection>
-    );
-  }
+    checkIsAdmin();
+
+    if (address) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [address]);
+
+  return (
+    <>
+      {isAdmin ? (
+        <MainSection>
+          <Navbar />
+          <Tabs />
+        </MainSection>
+      ) : isLoggedIn ? (
+        <div style={{ justifyContent: "center", display: "flex" }}>
+          <div>Unauthorized</div>
+          <button onClick={() => logOut()}>Log out</button>
+        </div>
+      ) : (
+        <div style={{ justifyContent: "center", display: "flex" }}>
+          <img
+            src={connectbtn}
+            className="btn-div"
+            onClick={() => modal.open()}
+          />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default AdminPanel;

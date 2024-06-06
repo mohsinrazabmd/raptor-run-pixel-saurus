@@ -1,4 +1,5 @@
 // import Game from "components/game";
+import Game from "components/game";
 import Navbar from "components/navbar";
 import { useEffect } from "react";
 import { setSocketInstance } from "store/redux/slices/socket/socketSlice";
@@ -24,7 +25,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* <Game /> */}
     </div>
   );
 };
